@@ -160,3 +160,54 @@
   await restore();
   await Promise.all([loadProducts(), loadOrders()]);
 })();
+
+// ---------- Policy pages (footer links) ----------
+(() => {
+  const EMAIL = "riyaenterprises77150@gmail.com";
+  const ADDR = "VELOR4, Rudra Apartment, Dongri Pada, Near ARC Transport, Sativali Naka, Vasai East, District Palghar, Maharashtra 401208, India";
+  const mail = `<a href="mailto:${EMAIL}" style="color:var(--brand)">${EMAIL}</a>`;
+  const H = t => `<h3 style="margin:16px 0 4px;font-size:1rem">${t}</h3>`;
+  const wrap = h => `<div style="line-height:1.55;font-size:.92rem">${h}</div>`;
+  const POL = {
+    returns: { t: "Returns", h: wrap(
+      H("7-day returns") + `<p>You can request a return within 7 days of receiving your order.</p>` +
+      H("What can be returned") + `<p>Items must be unused, in original packaging, with tags and accessories. Used, washed or customer-damaged items may not be accepted. Opened beauty and personal-care items cannot be returned for hygiene reasons.</p>` +
+      H("How to return") + `<p>Email ${mail} with your order number, a photo of the item and the reason. We will reply with the next steps.</p>` +
+      H("Return shipping") + `<p>The customer pays the return shipping cost. If your item arrived damaged, defective or wrong, email us within 7 days and we will tell you how we will fix it.</p>` +
+      H("Refunds") + `<p>After we receive and check the returned item, we refund the amount to your original payment method. For cash on delivery orders we will ask for your UPI or bank details. We will email you when the refund is started.</p>` +
+      H("Cancellation") + `<p>To cancel an order, email us before it is shipped, with your order number.</p>`) },
+    shipping: { t: "Shipping", h: wrap(
+      H("Delivery time") + `<p>Orders are usually delivered in 3 to 5 days, depending on your location.</p>` +
+      H("Delivery charges") + `<p>Delivery is free on orders of ₹499 and above. Below ₹499, a delivery charge of ₹40 applies.</p>` +
+      H("Payment") + `<p>Cash on delivery is available: you pay when the order arrives. Other payment options, when available, are shown at checkout.</p>` +
+      H("Tracking") + `<p>After you log in, open your account and tap <b>My orders</b>, then <b>Track order</b>. We update the status as your order moves.</p>` +
+      H("Correct details") + `<p>Please enter your full address, correct PIN code and a working mobile number. Delays caused by wrong details are not our responsibility.</p>`) },
+    privacy: { t: "Privacy", h: wrap(
+      H("What we collect") + `<p>Your name, email address, mobile number, delivery address and order details, when you log in or place an order.</p>` +
+      H("How we use it") + `<p>To log you in, process and deliver your orders, show your order status, and reply to your questions. We do not sell your personal information.</p>` +
+      H("Who handles it") + `<p>We use trusted service providers to run the store, such as our database and login service, our email service and our delivery and payment partners. They get only what is needed to do their job.</p>` +
+      H("On your device") + `<p>The site saves your cart and login on your device so they are there when you come back.</p>` +
+      H("Your choices") + `<p>To see, correct or delete your information, email ${mail}.</p>`) },
+    terms: { t: "Terms", h: wrap(
+      `<p>By using this store you agree to these terms.</p>` +
+      H("Orders") + `<p>An order is confirmed when you see the order confirmation. We may cancel an order if an item is unavailable or there is an error in price or details, and we will tell you by email.</p>` +
+      H("Prices") + `<p>All prices are in Indian rupees (₹). Prices and offers can change without notice. Product photos are for reference and colours may look slightly different.</p>` +
+      H("Your account") + `<p>Please give correct details and keep your login code private.</p>` +
+      H("Returns and shipping") + `<p>See our Returns and Shipping pages for those rules.</p>` +
+      H("Law") + `<p>These terms follow the laws of India.</p>`) },
+    contact: { t: "Contact", h: wrap(
+      `<p><b>VELORA</b> (VELOR4)</p><p>${ADDR}</p><p>Email: ${mail}</p><p>Please include your order number so we can help you faster. We reply by email.</p>`) }
+  };
+  const links = Object.keys(POL).map(k => `<button class="lnk" data-pol="${k}">${POL[k].t}</button>`).join("");
+  const sell = document.querySelector("[data-sell]");
+  if (sell && sell.parentElement) {
+    const f = document.createElement("div");
+    f.style.cssText = "text-align:center;padding:0 14px 30px;font-size:.85rem;color:var(--muted)";
+    f.innerHTML = `<div style="display:flex;flex-wrap:wrap;gap:6px 16px;justify-content:center;margin-bottom:8px">${links}</div><div>© 2026 VELORA · VELOR4</div>`;
+    sell.parentElement.after(f);
+  }
+  document.addEventListener("click", e => {
+    const b = e.target.closest("[data-pol]");
+    if (b) open(head(POL[b.dataset.pol].t) + `<div class="box">${POL[b.dataset.pol].h}</div>`, "pol");
+  });
+})();
