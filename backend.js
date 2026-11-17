@@ -42,13 +42,13 @@
     const nm = $("#ln").value.trim(), ph = $("#lp").value.trim();
     if (!nm || !/^[6-9]\d{9}$/.test(ph)) { $("#err").textContent = "Enter your name and a valid 10-digit mobile number."; return; }
     const { error } = await sb.auth.signInWithOtp({ phone: "+91" + ph, options: { data: { name: nm } } });
-    if (error) { $("#err").textContent = "Could not send OTP. Please try again."; return; }
+    if (error) { $("#err").textContent = "Could not send OTP: " + (error.message || error.code || "unknown error"); return; }
     tmpU = { nm, ph };
     open(head("Verify OTP") + `<div class="box"><p>Enter the OTP sent to +91 ${ph}.</p><input class="f" id="ot" inputmode="numeric" maxlength="6" autocomplete="one-time-code" aria-label="OTP"><div class="err" id="err" role="alert"></div></div><button class="big" data-ver>Verify and continue</button>`, "l2");
   };
   verify = async function () {
     const { error } = await sb.auth.verifyOtp({ phone: "+91" + tmpU.ph, token: $("#ot").value.trim(), type: "sms" });
-    if (error) { $("#err").textContent = "Wrong or expired OTP."; return; }
+    if (error) { $("#err").textContent = "OTP problem: " + (error.message || "unknown error"); return; }
     await restore(); await loadOrders(); toast("Logged in");
     after == "co" ? viewCheckout() : viewAccount();
   };
