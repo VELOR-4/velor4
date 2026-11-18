@@ -1,0 +1,19 @@
+[
+  {
+    "t": "Free delivery over ₹499",
+    "s": "Cash on delivery on every order",
+    "bg": "linear-gradient(120deg,#4A1FC4,#7B4DF0)"
+  },
+  {
+    "t": "7-day easy returns",
+    "s": "Shop without worry",
+    "bg": "linear-gradient(120deg,#0E7C66,#27B98F)"
+  },
+  {
+    "t": "Advertise your brand here",
+    "s": "Email us to book this space",
+    "bg": "linear-gradient(120deg,#C2410C,#F59E0B)",
+    "tag": "Sponsored",
+    "link": "mailto:riyaenterprises77150@gmail.com"
+  }
+]
