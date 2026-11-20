@@ -1,0 +1,5 @@
+[
+  { "t": "Shop the latest deals", "s": "Tap to see all products", "bg": "linear-gradient(120deg,#1546B0,#2F6FED)", "link": "category:All", "tag": "Offer" },
+  { "t": "Free delivery over ₹499", "s": "Cash on delivery on every order", "bg": "linear-gradient(120deg,#0E7C66,#27B98F)" },
+  { "t": "Advertise your brand here", "s": "Email us to book this space", "bg": "linear-gradient(120deg,#C2410C,#F59E0B)", "tag": "Sponsored", "link": "mailto:riyaenterprises77150@gmail.com" }
+]
