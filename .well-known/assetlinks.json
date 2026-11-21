@@ -1,0 +1,8 @@
+[{
+  "relation": ["delegate_permission/common.handle_all_urls"],
+  "target": {
+    "namespace": "android_app",
+    "package_name": "online.velor4.app",
+    "sha256_cert_fingerprints": ["06:E5:2E:5B:7A:B5:3F:82:3C:38:FA:00:14:00:14:DE:CE:EA:FE:23:76:A4:C2:AF:B9:11:36:96:D0:C4:1E:C4"]
+  }
+}]
